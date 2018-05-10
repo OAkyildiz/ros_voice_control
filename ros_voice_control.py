@@ -111,12 +111,13 @@ class ASRControl(object):
         rospy.sleep(1)
 
 if __name__ == '__main__':
+    path ='/usr/share/pocketsphinx/model/en-us/en-us'
     parser = argparse.ArgumentParser(
         description='Control ROS turtlebot using pocketsphinx.')
     parser.add_argument('--model', type=str,
-        default='/usr/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k',
+        default='/usr/share/pocketsphinx/model/en-us/en-us',
         help='''acoustic model path
-        (default: /usr/share/pocketsphinx/model/hmm/en_US/hub4wsj_sc_8k)''')
+        (default: /usr/share/pocketsphinx/model/en-us/en-us''')
     parser.add_argument('--lexicon', type=str,
         default='voice_cmd.dic',
         help='''pronunciation dictionary
@@ -132,4 +133,3 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     ASRControl(args.model, args.lexicon, args.kwlist, args.rospub)
-
